@@ -50,7 +50,7 @@ export default function App() {
       </head>
       <body className="bg-slate-900 text-slate-200 py-8 px-8">
         <Header />
-        <div className="ml-12">
+        <div className="md:ml-12">
           <Outlet />
         </div>
         <ScrollRestoration />

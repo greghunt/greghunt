@@ -11,7 +11,7 @@ export default function Header() {
   const submit = useSubmit();
   const [searchParams] = useSearchParams();
   return (
-    <div className="flex items-end mb-12">
+    <div className="flex flex-col md:flex-row md:items-end mb-12">
       <h1 className="font-display text-2xl mr-4">
         <a href="/" className="hover:text-teal-400">
           GregHunt.Dev
