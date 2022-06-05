@@ -1,18 +1,22 @@
-import type { LoaderFunction } from "@remix-run/cloudflare";
+import type { ActionFunction, LoaderFunction } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
 
 import { useLoaderData } from "@remix-run/react";
 import MarkdownIt from "markdown-it";
 import fm from "front-matter";
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
   const md = new MarkdownIt("commonmark");
   const authKey = btoa(`greghunt:${GH_TOKEN}`);
-  const query = encodeURIComponent(
-    "repo:greghunt/content extension:md path:/public"
-  );
+  const searchQuery = url.searchParams.get("s");
+  let query = "repo:greghunt/content extension:md path:/public";
+  if (searchQuery && searchQuery.length > 3) {
+    query = query + ` ${searchQuery}`;
+  }
+
   const response = await fetch(
-    `https://api.github.com/search/code?q=${query}`,
+    "https://api.github.com/search/code?q=" + encodeURIComponent(query),
     {
       headers: {
         Authorization: `Basic ${authKey}`,
@@ -44,28 +48,40 @@ export const loader: LoaderFunction = async () => {
     })
   );
 
-  return json(await content);
+  return json({ posts: await content, searchQuery });
 };
 
 export default function Index() {
-  const posts = useLoaderData();
-  console.log(posts);
+  const { posts, searchQuery } = useLoaderData();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Greg Hunt</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <h2>
-              <a href={`/${post.slug}`}>{post.attributes.title}</a>
-            </h2>
-            <p>{post.attributes.description}</p>
-            {post.attributes.pinned && (
-              <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
-            )}
-          </li>
-        ))}
-      </ul>
+    <div className="max-w-screen-md">
+      {posts.length > 0 ? (
+        <ul className="space-y-12">
+          {posts.map((post) => (
+            <li
+              key={post.slug}
+              className="bg-slate-700 p-8 rounded-xl border border-transparent hover:border-slate-400"
+            >
+              <h2 className="font-display text-4xl text-white mb-4">
+                <a href={`/${post.slug}`} className="hover:text-teal-400">
+                  {post.attributes.title}
+                </a>
+              </h2>
+              <div className="prose prose-invert text-lg">
+                <p>{post.attributes.description}</p>
+                {post.attributes.pinned && (
+                  <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="text-4xl font-display">
+          Sorry, couldn't find anything related to "
+          <span className="text-teal-200">{searchQuery}</span>"
+        </div>
+      )}
     </div>
   );
 }

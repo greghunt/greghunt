@@ -33,12 +33,12 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { title, html } = useLoaderData();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>
-        <a href="/">Greg Hunt</a>
-      </h1>
-      <h2>{title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+    <div>
+      <h1 className="font-display text-white text-4xl mb-8">{title}</h1>
+      <div
+        className="prose prose-invert"
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></div>
     </div>
   );
 }
