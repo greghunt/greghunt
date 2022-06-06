@@ -29,24 +29,23 @@ export function links() {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Greg Hunt, Web Developer",
+  description:
+    "A dump of my thoughts on a variety of topics, but mostly web development.",
   viewport: "width=device-width,initial-scale=1",
 });
 
-// export const loader: LoaderFunction = async ({ request }) => {
-//   return json({
-//     url: new URL(request.url),
-//   });
-// };
-
 export default function App() {
   return (
-    <html lang="en" className="font-mono scroll-smooth">
+    <html
+      lang="en"
+      className="font-mono scroll-smooth bg-gradient-to-br from-slate-900 to-cyan-700 text-slate-200 min-h-full"
+    >
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="bg-slate-900 text-slate-200 py-8 px-8">
+      <body className="py-8 px-8">
         <Header />
         <div className="md:ml-12">
           <Outlet />
