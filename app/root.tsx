@@ -1,7 +1,5 @@
-import type { MetaFunction, LoaderFunction } from "@remix-run/cloudflare";
-import { json } from "@remix-run/cloudflare";
+import type { MetaFunction } from "@remix-run/cloudflare";
 import Header from "~/components/header";
-import Breadcrumb from "~/components/breadcrumb";
 import styles from "./styles/app.css";
 import {
   Links,
@@ -10,11 +8,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
 
 export function links() {
   return [
+    { rel: "icon", href: "/icon.svg" },
     { rel: "stylesheet", href: styles },
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     {
