@@ -60,7 +60,7 @@ export default function Index() {
           {posts.map((post) => (
             <li
               key={post.slug}
-              className="bg-slate-700 p-8 rounded-xl border border-transparent hover:border-slate-400"
+              className="bg-slate-800 p-8 rounded-xl border border-transparent hover:border-slate-400"
             >
               <h2 className="font-display text-4xl text-white mb-4">
                 <a href={`/${post.slug}`} className="hover:text-teal-400">

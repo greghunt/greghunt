@@ -31,7 +31,7 @@ export default function Header() {
             type="search"
             autoFocus
             name="s"
-            className="bg-transparent border border-slate-500 rounded px-4 py-2 text-slate-300 focus:outline-none focus:border-white"
+            className="bg-transparent border border-slate-500 rounded-lg px-4 py-2 text-slate-300 focus:outline-none focus:border-white"
             defaultValue={searchParams.get("s") ?? ""}
           />
         </Form>
