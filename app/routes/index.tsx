@@ -68,6 +68,21 @@ export default function Index() {
                 </a>
               </h2>
               <div className="prose prose-invert text-lg">
+                <div className="flex items-center space-x-4">
+                  {post.attributes.date && (
+                    <time className="text-slate-400">
+                      {new Date(post.attributes.date).toLocaleDateString()}
+                    </time>
+                  )}
+                  {post.attributes.categories &&
+                    post.attributes.categories
+                      .split(",")
+                      .map((i) => (
+                        <span className="inline-block px-3 text-sm border border-slate-500 rounded-full">
+                          {i.trim()}
+                        </span>
+                      ))}
+                </div>
                 <p>{post.attributes.description}</p>
                 {post.attributes.pinned && (
                   <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
