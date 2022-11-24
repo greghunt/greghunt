@@ -1,8 +1,8 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: "@layouts/Post.astro"
 title: "About Me"
-description: "Lorem ipsum dolor sit amet"
-updatedDate: "August 08 2022"
+description: "About Greg Hunt, web developer."
+updatedDate: "November 24 2022"
 heroImage: "/placeholder-about.jpg"
 ---
 
