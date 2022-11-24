@@ -4,15 +4,13 @@ title:  "Plugin of the Week: WP Notification Center"
 description: "Our WordPress plugin of the week is: WP Notification Center. We're sick of the messy notifications WordPress has yet to get a handle on."
 date:   2017-05-05 2:56:00 -0500
 categories: wordpress plugins
-image: /assets/blog/too-many-notifications.jpg
+heroImage: https://img.ghunt.io/too-many-notifications.jpg
 ---
 
 ## [Notification Centre](https://wordpress.org/plugins/wp-notification-center/)
 [Download](https://wordpress.org/plugins/wp-notification-center/){: .button}
 
 **WordPress has a serious problem with notifications.** Don't believe me? Take a look at this page:
-
-![Chill on the notifications, please](/assets/blog/too-many-notifications.jpg)
 
 This is at the top of my list with WordPress frustrations at the moment. It's just poor UX. I get that we need **some** sort of notification system, but the problem is that WordPress gives too much freedom to plugin developers to easily abuse it with no limits.
 

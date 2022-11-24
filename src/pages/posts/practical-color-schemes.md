@@ -1,13 +1,11 @@
 ---
 layout: "@layouts/Post.astro"
-title      : Practical Color Schemes for Web Design
+title: Practical Color Schemes for Web Design
 description: Choosing a color scheme for your website doesn't have to be complicated. Follow these rules and you'll be sure to nail it.
-date       : 2017-07-20 16:00:00 -0500
-categories : web design
-image      : /assets/blog/practical-color-schemes.jpg
+date: 2017-07-20 16:00:00 -0500
+categories: web design
+heroImage: https://img.ghunt.io/practical-color-schemes.jpg
 ---
-
-![Practical Color Schemes for Web Design](/assets/blog/practical-color-schemes.jpg)
 
 Creating a color scheme for your new brand can be a daunting process if you're going the DIY route. Color theory? Color psychology? Brand recognition? There's a lot to think about for such a straight forward task. Traditionally this was left up to a branding agency that would provide you with the final color palette and some documentation on its reasoning and how you should use it. But that's expensive, and I guarantee you if you're a new business, it's not necessary and can be simplified a whole lot.
 
@@ -176,7 +174,7 @@ A good guide here is to build your belt as you go and record it so you can stay 
 
 If you're curious, here's the color scheme in practice on a new open-source WordPress theme we'll be releasing shortly:
 
-[![Open Source WordPress Theme](/assets/blog/open-source-wp-theme.jpg)](/assets/blog/open-source-wp-theme.jpg)
+[![Open Source WordPress Theme](https://img.ghunt.io/open-source-wp-theme.jpg)](https://img.ghunt.io/open-source-wp-theme.jpg)
 
 Notice how the primary color may not be the most used, but it's heavily used as the _accent_ color, the color which is used to draw your attention especially for actionable items. It's not used the most in terms of quantity, but it's the most important color on the page. I often use this strategy where the light/dark colors form the base and the primary color is used as the accent and highlighter.
 

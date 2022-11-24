@@ -4,11 +4,10 @@ title:  "Plugin of the Week: No Format Shortcode"
 description: "This week's plugin is clearly biased considering it's our own. We had a flexible solution to a common problem with formatting in WordPress, and so we shared it with others."
 date:   2017-05-14 8:30:00 -0500
 categories: wordpress plugins
-image: /assets/blog/no-format-shortcode.png
+heroImage: https://img.ghunt.io/no-format-shortcode.png
 ---
 
 ## [No Format Shortcode](https://wordpress.org/plugins/no-format-shortcode/)
-![No format shortcode screenshot](/assets/blog/no-format-shortcode.png)
 [Download](https://wordpress.org/plugins/no-format-shortcode/){: .button}
 
 

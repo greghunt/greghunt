@@ -1,13 +1,11 @@
 ---
 layout: "@layouts/Post.astro"
-title      : 9 Reasons to Choose a Static Site over WordPress
+title: 9 Reasons to Choose a Static Site over WordPress
 description: WordPress is often the default choice by many. But it would do them some good to enumerate just why exactly they're choosing WordPress over a simpler static website.
-date       : 2017-05-19 19:00:00 -0500
-categories : wordpress dev
-image      : /assets/blog/wordpress-vs-static.jpg
+date: 2017-05-19 19:00:00 -0500
+categories: wordpress dev
+heroImage: https://img.ghunt.io/wordpress-vs-static.jpg
 ---
-
-![Wordpress vs static sites](/assets/blog/wordpress-vs-static.jpg)
 
 As a development shop that specializes in WordPress, it seems a bit counter-intuitive to be publishing an article on **why NOT** to use WordPress. It's because WordPress is simply a tool. It's our main choice of CMS for many clients. And as a tool, its job is to help get the job done efficiently, not to be the job itself.
 
