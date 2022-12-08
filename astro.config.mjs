@@ -6,9 +6,12 @@ import sitemap from '@astrojs/sitemap';
 // import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
+import tailwind from "@astrojs/tailwind";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://greghunt.dev',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), tailwind()]
   // output: "server",
   // adapter: cloudflare()
 });
