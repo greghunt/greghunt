@@ -1,6 +1,6 @@
 ---
 title: Component Development and Taillwind CSS
-date: 2022-06-09T14:09:16+00:00
+date: 2022-10-01T14:09:16+00:00
 layout: "@layouts/Post.astro"
 tags:
     - styling
