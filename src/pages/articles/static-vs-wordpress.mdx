@@ -1,5 +1,4 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-import Image from 'next/image'
 
 export const meta = {
   author: 'Greg Hunt',
@@ -14,9 +13,11 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 As a development shop that specializes in WordPress, it seems a bit counter-intuitive to be publishing an article on **why NOT** to use WordPress. It's because WordPress is simply a tool. It's our main choice of CMS for many clients. And as a tool, its job is to help get the job done efficiently, not to be the job itself.
 
-<Image
-  src="https://img.ghunt.io/wordpress-vs-static.jpg"
+<img
+  src="https://img.ghunt.io/wordpress-vs-static.jpg?fm=webp"
   alt="WordPress vs Static"
+  width="1200"
+  width="800"
 />
 
 Alternatively, a **static website** is still a very good choice for most. We can loosely define it as a site without a database, and a very small, sometimes absent, backend. It can be as simple as a handful of HTML, CSS and Javascript files that are placed on a server, which is exactly what WordPress serves at the end of the day anyway. In this case, we're just omitting all of the complications that it can bring.

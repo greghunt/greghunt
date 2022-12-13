@@ -1,5 +1,4 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-import Image from 'next/image'
 
 export const meta = {
   author: 'Greg Hunt',
@@ -14,9 +13,11 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 Creating a color scheme for your new brand can be a daunting process if you're going the DIY route. Color theory? Color psychology? Brand recognition? There's a lot to think about for such a straight forward task. Traditionally this was left up to a branding agency that would provide you with the final color palette and some documentation on its reasoning and how you should use it. But that's expensive, and I guarantee you if you're a new business, it's not necessary and can be simplified a whole lot.
 
-<Image
+<img
   src="https://img.ghunt.io/practical-color-schemes.jpg"
   alt="Practical Color Schemes"
+  width={1200}
+  height={800}
 />
 
 ## Branding and Color Schemes
@@ -43,17 +44,7 @@ This is your foundation. A good brand is easy to process and remember. What's ea
 
 Other color theory principles apply here, but don't overthink it. Identify your target market (what color do they resonate with?); choose a memorable but unique color; use it! Here's a nice sea foam:
 
-<div
-  style="
-	width:100%;
-	height:250px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#21c0a8;
-	color: #1d1c21;
-"
->
+<div className="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]">
   Primary
 </div>
 
@@ -61,17 +52,7 @@ Other color theory principles apply here, but don't overthink it. Identify your 
 
 A good functional color palette needs good contrast. The web is also inherently a text medium so you're going to want to be able to read things easily. This means choosing a good dark color for text and for contrast. Pure colors like black aren't a great choice unless it's very intentional. An easy solution is to take a darker tone of your primary color and perhaps adjust the hue a bit. Here's what I came up with by moving the hue a bit more towards blue than green:
 
-<div
-  style="
-	width:100%;
-	height:250px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#1d1c21;
-	color: #21c0a8;
-"
->
+<div className="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]">
   Dark
 </div>
 
@@ -81,44 +62,14 @@ Notice how we only have two colors so far but they both work exceedingly well in
 
 Surprise, surprise, you guessed right. The same thing applies here in reverse. Note, you still want to be able to contrast all combinations that you've chosen so far. Like so:
 
-<div style="display:flex;flex-direction:row;">
-  <div
-    style="
-	width:100%;
-	height:250px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#21c0a8;
-	color: #1d1c21;
-	"
-  >
+<div className="flex">
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]">
     Primary
   </div>
-  <div
-    style="
-		width:100%;
-		height:250px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#1d1c21;
-		color: #21c0a8;
-	"
-  >
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]">
     Dark
   </div>
-  <div
-    style="
-		width:100%;
-		height:250px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#e4ebed;
-		color: #21c0a8;
-	"
-  >
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#e4ebed] text-[#21c0a8]">
     Light
   </div>
 </div>
@@ -133,101 +84,31 @@ A good guide here is to build your belt as you go and record it so you can stay 
 
 #### Main Scheme
 
-<div style="display:flex;flex-direction:row;">
-  <div
-    style="
-	width:100%;
-	height:250px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#21c0a8;
-	color: #1d1c21;
-	"
-  >
+<div className="flex">
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]">
     Primary
   </div>
-  <div
-    style="
-		width:100%;
-		height:250px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#1d1c21;
-		color: #21c0a8;
-	"
-  >
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]">
     Dark
   </div>
-  <div
-    style="
-		width:100%;
-		height:250px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#e4ebed;
-		color: #21c0a8;
-	"
-  >
+  <div className="flex h-[250px] w-full items-center justify-center bg-[#e4ebed] text-[#21c0a8]">
     Light
   </div>
 </div>
 
 #### Utility Belt
 
-<div style="display:flex;flex-direction:row;">
-  <div
-    style="
-	width:100%;
-	height:50px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#ca3f3f;
-	color: #e39797;
-	"
-  >
+<div className="flex">
+  <div className="flex h-[50px] w-full items-center justify-center bg-[#ca3f3f] text-[#e39797]">
     Alert
   </div>
-  <div
-    style="
-		width:100%;
-		height:50px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#20b7c9;
-		color: #383544;
-	"
-  >
+  <div className="flex h-[50px] w-full items-center justify-center bg-[#20b7c9] text-[#383544]">
     Info
   </div>
-  <div
-    style="
-	width:100%;
-	height:50px;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color:#e4ebed;
-	color: #7d798c;
-	"
-  >
+  <div className="flex h-[50px] w-full items-center justify-center bg-[#e4ebed] text-[#7d798c]">
     Muted Text
   </div>
-  <div
-    style="
-		width:100%;
-		height:50px;
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		background-color:#343338;
-		color: #7d798c;
-	"
-  >
+  <div className="flex h-[50px] w-full items-center justify-center bg-[#343338] text-[#7d798c]">
     Dark Highlight
   </div>
 </div>
