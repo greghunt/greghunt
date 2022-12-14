@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Greg Hunt</title>
+        <link>https://greghunt.dev</link>
+        <description>Your blog description</description>
+        <lastBuildDate>Wed, 14 Dec 2022 17:21:44 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Greg Hunt</title>
+            <url>https://greghunt.dev/favicon.ico</url>
+            <link>https://greghunt.dev</link>
+        </image>
+        <copyright>All rights reserved 2022</copyright>
+        <item>
+            <title><![CDATA[Component Development and Taillwind CSS]]></title>
+            <link>https://greghunt.dev/articles/component-development-and-taillwind-css</link>
+            <guid>https://greghunt.dev/articles/component-development-and-taillwind-css</guid>
+            <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Up until now, our website has acted (and even resembled) more of a business card than a website. That's about to change. We want to keep you up to date with what we're doing.]]></description>
+            <content:encoded><![CDATA[<p>CSS frameworks have been around for a long time and for good reason. If you’ve ever written CSS from scratch, you’ll know that you’re often writing the same CSS for the same basic UI components in every project, perhaps with small variances. In fact, most front-end developers probably have their own mini “framework” stylesheet they included as a starter for most projects.</p>
+<p>Enter <a href="https://getbootstrap.com/">Bootstrap</a>. Even though there were several CSS frameworks around this time, Bootstrap became the unquestioned leader for years. Whole templates and categories of development arose that revolved around Bootstrap styles. This is because it had well refined amount of styles and a large enough component library that you could easily finish most websites and even web applications using only this framework.</p>
+<p>With such an influx of Bootstrap built sites, a pattern began to emerge. It seamed like half of all websites had the same “bootstrapped” look. Sites and design systems began to lose personality. This was the first issue.</p>
+<p>Luckily, Bootstrap was built with SASS and so developers were able to download their own personalized flavour of it by tweaking its variables with different colours, sizes and spacing. This helped the “bootstrap” look a bit, but it still had another problem.</p>
+<p>The minified build of Bootstrap began to grow. Version 3 was <strong>121KB</strong>. Version 4 was <strong>162KB</strong>. And even as recently as last year, Bootstrap 5 was released at <strong>194KB</strong>. As the years and versions past, Bootstrap did more and more and grew and grew.</p>
+<p>At the same time, the front-end development community was going through a transformation. There was a huge focus on performance while maintaining a good developer experience.</p>
+<p>Build processes had taken hold and so we no longer needed to pull in entire pre-built frameworks. Instead we could pull in only what we needed and crunch down the size as much as possible later in the build chain. Frameworks like React came to prominence and the component driven UI became more and more popular. But when you start making your own functional components, you end up fighting against the prebuilt nature of Bootstrap components to fit into your own.</p>
+<p>Performance wasn’t just about the time of a full page load. It now relied on other metrics like <a href="https://web.dev/vitals/">web vitals</a>. This meant the render blocking nature of CSS was much more important so minimizing every byte of CSS that needed to be downloaded was crucial for perceived load times.</p>
+<p>So we had 3 main problems at this stage:</p>
+<ol>
+<li>Bootstrap sites still looked like a bootstrap site</li>
+<li>Bootstrap included way too much CSS up front</li>
+<li>Bootstrap components were too opinionated to fit in with custom component development.</li>
+</ol>
+<p>There was one redeeming quality that emerged from Bootstrap in our company around this later period. We found ourselves using mostly only their utility classes. It provided a great base of classes that did low-level things like add margin, padding, shadows and backgrounds. This fit perfectly in the build process of components and sites looked less “bootstrappy.” Including only the reset and utilities also cut down the amount of CSS needed to begin rendering the page.</p>
+<h2>Is Tailwind better than bootstrap?</h2>
+<p>Having already had this realization, when I came across <a href="https://tailwindcss.com/">Tailwind CSS</a> I immediately saw its potential to replace Bootstrap in our development. After actually using it for a project I was even more convinced. The speed at which you could develop handcrafted components was astounding. It was the perfect companion to developing UI components and solved all of the problems inherent with Bootstrap while elevating all of the advantages of the utilitarian nature of Bootstrap. Since transitioning to Tailwind CSS I’ve completely ditched Bootstrap, and this is after working with it religiously for several years.</p>
+<h2>Criticisms of Tailwind CSS</h2>
+<p>The major criticism of Tailwind was the fact that you were essentially binding your styles to your markup and polluting your HTML with a plethora of weird looking classes. Admittedly, it looked ugly. But given some deeper thought, it actually makes a lot of sense.</p>
+<p>For a long time we were taught as developers to keep styles separate from markup. Why? Because they were of separate concerns, or something like that, right? HTML was your structure data and content, and CSS was now you presented it. The thing is that in practice styles are almost always intimately linked with the structure of your HTML.</p>
+<p>Also, it’s difficult to maintain a lot of granular classes in your HTML if you want to reproduce some UI. However this concern completely goes away when you consider that you can abstract both your HTML and long class styles into one component file that get’s reused. So there’s no repetition and you can maintain everything in one file, in one component.</p>
+<h2>Is Tailwind faster than CSS?</h2>
+<p>There are two ways of interpreting this question.</p>
+<ol>
+<li>Is it faster <em>developing</em> with Tailwind instead of CSS</li>
+<li>Does a web page load faster using Tailwind instead of vanilla CSS</li>
+</ol>
+<h3>Speed of Development with Tailwind</h3>
+<p>I would say it’s undoubtedly faster developing sites with Tailwind instead of CSS. However this is only the case when you have some sort of component system where you don’t have to repeat the same long class names and can simply abstract your classes and markup into a reusable component. Something like <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, or even backend templating languages like <a href="https://laravel.com/docs/9.x/blade">Blade</a>.</p>
+<p>Since transitioning to Tailwind, I estimate that I can develop a static web page using some sort of component framework 40% faster than if I were using the same component framework but writing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> either plainly or as <a href="https://sass-lang.com/">SASS</a> and with a methodology like <a href="http://getbem.com/">BEM</a>.</p>
+<p>The reason I believe it’s faster is that you can stay within your HTML and not have to rotate between a stylesheet. It doesn’t seem like a big deal, but it certainly adds up. Also, there is just so much repetition of simple style properties and values like <code>margin: 0px</code> that you have to rewrite within your rule statements countless times instead of the 3 keystrokes of <code>m-0</code></p>
+<h3>Tailwind Performance</h3>
+<p>In regards to performance, I believe Tailwind also wins the battle of performance as well. For two main reasons: purging and file size.</p>
+<h4>Purging</h4>
+<p>Purging your unused CSS is baked into Tailwind. You can obviously do this to your plain CSS as well, but not many people do unfortunately – even though its critical to increasing your <a href="https://web.dev/learn-web-vitals/">web vitals</a>. CSS is critical to visually rendering your page and so you want the absolute smallest file size in order for it to not only download but parse and render your styles visually to the user. This is a requirement in Tailwind but not necessarily when you manually author your CSS.</p>
+<h4>File Size</h4>
+<p>By using utility classes, you are essentially omitting any repetition of style rules in your CSS leading to the smallest CSS file size possible. However, this is at the expense of repeating your classes in your actual HTML.</p>
+<p>However, the bytes required to express these styles as classes in your HTML instead of rules in your CSS is substantially lower.</p>
+<p>On that note, Tailwind CSS can be considered better for SEO, since Google favours faster web pages with <a href="https://www.searchenginejournal.com/ranking-factors/core-web-vitals/#close">better core vitals</a>.</p>
+<h2>Is CSS better than Tailwind?</h2>
+<p>As much as I love working with Tailwind, I truly wish I could simply write plain CSS. I’m a big believer in leveraging the native technologies of your platform and the truth is CSS is built into the browser, but you need a build chain and NodeJS dependencies in order to compile your Tailwind CSS.</p>
+<p>Tailwind isn’t a replacement for CSS, it’s a supplemental tool. Therefore, as a developer you need to make the decision whether the advantages this tool brings to your project is worth the increase in complexity since <em>it’s not a native technology</em> of the browser, as opposed to plain CSS.</p>
+<p>For example, I used to use SASS for several reasons. But mainly it allowed me to use variables in my CSS and keep things very <abbr title="Don&#x27;t Repeat Yourself">DRY</abbr> and maintainable. It was worth the added complexity for quite awhile because the browser didn’t offer this natively but it allowed me to write and maintain my styles substantially faster. <em>But,</em> once <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*">custom properties</a> arrived to the browser and became well-supported, I ditched SASS in favour of this native technology.</p>
+<p>So the question that needs answering is twofold, is there a native way of authoring lean, utility based CSS natively? And is the advantage of adding Tailwind to fill this gap worth the added complexity to your projects. This is a question every developer must answer for themselves and the particular project under consideration.</p>
+<h2>Can I use Tailwind CSS for free?</h2>
+<p><a href="https://tailwindcss.com/">Tailwind CSS</a> is completely free, however <a href="https://tailwindui.com/">Tailwind UI</a> is not. Tailwind CSS is the CSS framework and Tailwind UI is the premium set of components built from Tailwind CSS. It’s a collection of copyable markup you can paste as components into your own projects. Tailwind UI also leverages <a href="https://headlessui.com/">Headless UI</a> in order to add interactive functionality with an un-styled, un-opinionated blank slate to work from while maintaining all the the functionality and accessibility necessary for many complex components.</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Optimizing Tailwind to the Last Byte]]></title>
+            <link>https://greghunt.dev/articles/tailwind-optimization</link>
+            <guid>https://greghunt.dev/articles/tailwind-optimization</guid>
+            <pubDate>Mon, 26 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Tailwind CSS has helped us enourmously in optimizing our styles. However, there are still ways to write it inefficiently that we should be thinking about.]]></description>
+            <content:encoded><![CDATA[<p>Now that <a href="https://tailwindcss.com/">Tailwind</a> pushes bytes to your HTML instead of your CSS, we should be mindful of reducing class usage in our HTML. A good example is:</p>
+<h3>435 Byte Styled HTML List</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700 underline<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h3>VS – 238 Byte Styled HTML List</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text-sm font-bold text-slate-700<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>underline<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Some List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>And this is in a list of only 6 items, imagine the difference when we&#x27;re a dealing with repetitive lists and HTML on the order of dozens or hundreds.</p>
+<h2>Testing Byte Difference for 65K List Items</h2>
+<p>I ran a little test to confirm this. <a href="https://twitter.com/volkandkaya/status/1574583837971152896">Volkan Kaya made a good point</a> that compression may make this a trivial difference. But in fact, it wasn&#x27;t.</p>
+<p>You can see the HTML used for both the duplicated Tailwind classes and the leaner HTML <a href="https://github.com/greghunt/duplicate-class-experiment/tree/main/dist">here</a>.</p>
+<h2>Results</h2>
+<p>Here are the comparisons between of an HTML file with ~65k list items of duplicated Tailwind classes, and a leaner version where the styles were moved to more efficient selectors.</p>
+<p><img src="https://raw.githubusercontent.com/greghunt/duplicate-class-experiment/main/charts/raw.png" alt="Raw HTML"/></p>
+<p><img src="https://raw.githubusercontent.com/greghunt/duplicate-class-experiment/main/charts/gzip.png" alt="GZipped"/></p>
+<p><img src="https://raw.githubusercontent.com/greghunt/duplicate-class-experiment/main/charts/brotli.png" alt="Brotli"/></p>
+<p>As you can see, there is a significant difference in size even with text compression being used. It&#x27;s important to note, this is a contrived test and amplified to highlight a worst case scenario, so I don&#x27;t imagine many will run into real-world scenarios that come close to these number differences.</p>
+<h3>Render and Paint Times</h3>
+<p>I also compared the render and paint times. I figured this would be the number to suffer between the examples compared to compressed HTML. But it turns out that the paint and rendering times don&#x27;t vary to any significant degree between either examples. They averaged somewhere between 800 – 1100 ms for the render, and 2-10 ms for the paint time.</p>
+<h2>Don&#x27;t Forget the Power of the Cascade</h2>
+<p>Just because using Tailwind simplifies styling into a utility based model, doesn&#x27;t mean we should forget about the cascading nature of CSS and not take advantage of it. Yes, Tailwind simplifies the complexities and issues with cascading styles, but it still has an advantage to it in reducing repetition and complexitiy (when used correctly).</p>
+<p>This was a good rule of thumb 10 years ago when crafting CSS directly by hand, but it&#x27;s worth repeating today even with tools like Tailwind at your disposal. Start your styles as generically as possible on your outermost elements, and get more specific only once you must address the particularities of inner elements.</p>
+<p>I find <strong>abstraction</strong> is a great skill you get used to as a programmer over time. Look at all of the things that are in common, then group them together as one entity so they can be used more effectively. This works in programs as much as it does when dealing with CSS. If 90% of the text on your website is <code>#334155</code>, then the base text color on your html or body element (<code>&lt;body class=&quot;text-black&quot;&gt;</code>) probably shouldn&#x27;t be black. This sounds obvious when I say it like that, but I&#x27;m continually surprised at how many websites I inspect that don&#x27;t do this and instead insist on just repeating the class <code>text-slate-700</code> on 289 elements of a 5 page website.</p>
+<p>Many of you may be familiar with the concept of a <a href="https://meyerweb.com/eric/tools/css/reset/">reset</a> or <a href="https://necolas.github.io/normalize.css/">normalize</a> stylesheet. That&#x27;s what CSS abstraction looks like in practice and is at the far end of the &quot;abstraction&quot; scale. Since browsers don&#x27;t have a unified way of styling default elements, we start things off with normalizing styles to get a consistent display for all elements. Then if we continue along the cascade, we may address our base element styles, where we get a bit more opinionated and style the look and feel of all of the naked elements that will be used, like <code>&lt;h1&gt;</code> headings and <code>&lt;input&gt;</code>&#x27;s. From here we usually move to component levels but the same holds true. We implement methodologies like <a href="https://en.bem.info/methodology/">BEM</a> for our components so we can name and easily abstract things only at their block levels, carefully <a href="https://en.bem.info/methodology/key-concepts/#modifier">modifying</a> them as needed. This makes things reusable and composable without the need to get <strong>too specific</strong>, <strong>too early</strong>.</p>
+<p>I must admit, I hear a lot in recent years that cascading styles and CSS are a pain to work with, but I never really felt that myself. Maybe it&#x27;s because I had a better experience with it when the web was a bit simpler and it was actually an elegant and powerful tool for creating a consistent visual interface across an enourmous variety of web pages with very few bytes. That&#x27;s if you embraced its cascading nature and didn&#x27;t work your way upstream like a desperate salmon going home to <a href="https://strikeandcatch.com/why-do-salmon-swim-upstream/">lay eggs and die of exhaustion</a>. Styles cascade in one direction for a reason.</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Practical Color Schemes for Web Design]]></title>
+            <link>https://greghunt.dev/articles/practical-color-schemes</link>
+            <guid>https://greghunt.dev/articles/practical-color-schemes</guid>
+            <pubDate>Thu, 20 Jul 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Choosing a color scheme for your website doesn't have to be complicated. Follow these rules and you'll be sure to nail it.]]></description>
+            <content:encoded><![CDATA[<p>Creating a color scheme for your new brand can be a daunting process if you&#x27;re going the DIY route. Color theory? Color psychology? Brand recognition? There&#x27;s a lot to think about for such a straight forward task. Traditionally this was left up to a branding agency that would provide you with the final color palette and some documentation on its reasoning and how you should use it. But that&#x27;s expensive, and I guarantee you if you&#x27;re a new business, it&#x27;s not necessary and can be simplified a whole lot.</p>
+<img src="https://img.ghunt.io/practical-color-schemes.jpg" alt="Practical Color Schemes" width="1200" height="800"/>
+<h2>Branding and Color Schemes</h2>
+<p>In most big branding guides, you&#x27;ll get a handful of colors that create your brand, but only if you use them consistently. If your brand consists of 5 distinct colors, it can drastically change itself depending on how you use those colors. Which one will get the most use? In what context to use a specific color? These are important questions to know the answers. This is the mistake I see a lot of DIY branders making when trying to create a branded design for their website. They grab a color palette and almost randomly start using the colors.</p>
+<p>Luckily, websites are actually a pretty consistent medium and how you use those colors can be broken down to a very straight forward process.</p>
+<h2>Traditional Color Schemes and Tools</h2>
+<p>You might&#x27;ve started by Googling color scheme tools. Tools like <a href="https://color.adobe.com/">Adobe&#x27;s Kuler</a> or <a href="https://coolors.co/">Coolers</a> can help inspire and provide you with ready made color palettes for your website. But that&#x27;s the easy part. What do you do from there? And how do you apply it to a website?</p>
+<h2>The difference with web</h2>
+<p>I&#x27;ve tried these tools myself, and they&#x27;ve been great for inspiration, but in practice they&#x27;ve never panned out. That&#x27;s because most websites will not comply to an almost random mix of 5 colors, even though they look awesome. It&#x27;s just not a functional application of a color palette.</p>
+<p>Over the years, I realized I had slowly ditched those tools and broken down the process to some very simple rules that are easy to apply and consistently produce great practical results. Here&#x27;s my web method approach to colors.</p>
+<h2>The Web Method</h2>
+<h3>Step 1: Choose a Primary Color</h3>
+<p>This is your foundation. A good brand is easy to process and remember. What&#x27;s easier than one consistently used solid color? The repetition hammers it home and it doesn&#x27;t get muddled by other competing colors. The other colors I&#x27;ll mention are only supportive to this main color. They should never compete for attention with it.</p>
+<p>Other color theory principles apply here, but don&#x27;t overthink it. Identify your target market (what color do they resonate with?); choose a memorable but unique color; use it! Here&#x27;s a nice sea foam:</p>
+<div class="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]"><p>Primary</p></div>
+<h3>Step 2: Choose a Dark Color</h3>
+<p>A good functional color palette needs good contrast. The web is also inherently a text medium so you&#x27;re going to want to be able to read things easily. This means choosing a good dark color for text and for contrast. Pure colors like black aren&#x27;t a great choice unless it&#x27;s very intentional. An easy solution is to take a darker tone of your primary color and perhaps adjust the hue a bit. Here&#x27;s what I came up with by moving the hue a bit more towards blue than green:</p>
+<div class="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]"><p>Dark</p></div>
+<p>Notice how we only have two colors so far but they both work exceedingly well in terms of text and background contrast. But two very saturated colors can be overwhelming and restricts our possibilities a bit. We need step 3.</p>
+<h3>Step 3: Choose a Light Color</h3>
+<p>Surprise, surprise, you guessed right. The same thing applies here in reverse. Note, you still want to be able to contrast all combinations that you&#x27;ve chosen so far. Like so:</p>
+<div class="flex"><div class="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]"><p>Primary</p></div><div class="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]"><p>Dark</p></div><div class="flex h-[250px] w-full items-center justify-center bg-[#e4ebed] text-[#21c0a8]"><p>Light</p></div></div>
+<h3>Step 4: Make your utility belt.</h3>
+<p>At this point you pretty much have your finished color scheme. Yes it was that easy, and we only have 3 colors in total. However, if you&#x27;re building anything more than a few static pages, you&#x27;ll need some variance to communicate information in different states. Or maybe even to just break up the monotony of 3 repetitive colors. Yes, the repetition is good, but when it&#x27;s all you have to use, it can become a bit much.</p>
+<p>The trick here is to not design around your utility belt. Your main color scheme is pretty strict, but your utility belt can be pretty loose in order to simply meet your demands as you build something more complex. Need a message alert color? Take your primary color and change the hue towards red but stay in the same tone. Need some muted text to downplay its importance? Drop the opacity on your dark color.</p>
+<p>A good guide here is to build your belt as you go and record it so you can stay consistent, but you won&#x27;t need it from the start. Here&#x27;s what a good belt might look like along side our main scheme:</p>
+<h4>Main Scheme</h4>
+<div class="flex"><div class="flex h-[250px] w-full items-center justify-center bg-[#21c0a8] text-[#1d1c21]"><p>Primary</p></div><div class="flex h-[250px] w-full items-center justify-center bg-[#1d1c21] text-[#21c0a8]"><p>Dark</p></div><div class="flex h-[250px] w-full items-center justify-center bg-[#e4ebed] text-[#21c0a8]"><p>Light</p></div></div>
+<h4>Utility Belt</h4>
+<div class="flex"><div class="flex h-[50px] w-full items-center justify-center bg-[#ca3f3f] text-[#e39797]"><p>Alert</p></div><div class="flex h-[50px] w-full items-center justify-center bg-[#20b7c9] text-[#383544]"><p>Info</p></div><div class="flex h-[50px] w-full items-center justify-center bg-[#e4ebed] text-[#7d798c]"><p>Muted Text</p></div><div class="flex h-[50px] w-full items-center justify-center bg-[#343338] text-[#7d798c]"><p>Dark Highlight</p></div></div>
+<p>If you&#x27;re curious, here&#x27;s the color scheme in practice on a new open-source WordPress theme we&#x27;ll be releasing shortly:</p>
+<p><a href="https://img.ghunt.io/open-source-wp-theme.jpg"><img src="https://img.ghunt.io/open-source-wp-theme.jpg" alt="Open Source WordPress Theme"/></a></p>
+<p>Notice how the primary color may not be the most used, but it&#x27;s heavily used as the <em>accent</em> color, the color which is used to draw your attention especially for actionable items. It&#x27;s not used the most in terms of quantity, but it&#x27;s the most important color on the page. I often use this strategy where the light/dark colors form the base and the primary color is used as the accent and highlighter.</p>
+<p>It&#x27;s simple, it&#x27;s flexible, it works. Give it a try!</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[9 Reasons to Choose a Static Site over WordPress]]></title>
+            <link>https://greghunt.dev/articles/static-vs-wordpress</link>
+            <guid>https://greghunt.dev/articles/static-vs-wordpress</guid>
+            <pubDate>Fri, 19 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[WordPress is often the default choice by many. But it would do them some good to enumerate just why exactly they're choosing WordPress over a simpler static website.]]></description>
+            <content:encoded><![CDATA[<p>As a development shop that specializes in WordPress, it seems a bit counter-intuitive to be publishing an article on <strong>why NOT</strong> to use WordPress. It&#x27;s because WordPress is simply a tool. It&#x27;s our main choice of CMS for many clients. And as a tool, its job is to help get the job done efficiently, not to be the job itself.</p>
+<img src="https://img.ghunt.io/wordpress-vs-static.jpg?fm=webp" alt="WordPress vs Static" width="800"/>
+<p>Alternatively, a <strong>static website</strong> is still a very good choice for most. We can loosely define it as a site without a database, and a very small, sometimes absent, backend. It can be as simple as a handful of HTML, CSS and Javascript files that are placed on a server, which is exactly what WordPress serves at the end of the day anyway. In this case, we&#x27;re just omitting all of the complications that it can bring.</p>
+<p>As the most popular platform powering the web, we have many clients who are familiar, either having used or been recommended, with WordPress. They come to us asking if we can build them a WordPress site that fits all their needs. It&#x27;s at this point that we try and get them to forget about WordPress until we know exactly what their needs are, and do our best not to put the cart before the horse.</p>
+<h3>Here are some common reasons to reconsider:</h3>
+<h2>1. Performance</h2>
+<p>Let&#x27;s approach this in order of importance. The biggest reason to reconsider WordPress is the hit you take in speed and performance. This isn&#x27;t to say WordPress is slow. It&#x27;s only slow in the wrong hands (<a href="#8-better-talent-pool">see #8</a>). However, the mere fact that it&#x27;s database dependent and needs to compile on the fly will increase the overhead that&#x27;s needed to render a simple HTML page.</p>
+<p>If you&#x27;re not running something like a media site or blog, that requires frequent updates and a database, there&#x27;s no reason to build your 5 page business card website on top of such a dynamic engine as WordPress.</p>
+<h2>2. Security</h2>
+<p>Again, WordPress is only insecure in the wrong hands. It, in fact, has many good security measures to ensure its safety. However, due to the fact that it powers over 1/4 of the internet&#x27;s traffic, and its code is open-sourced and viewable by all, it becomes a prime target for hackers.</p>
+<p>In order to ensure your installation is secure, you must keep things extremely current and squeaky clean. Installing unknown (or just poorly coded) plugins, leaving the WordPress core a few versions behind, or hosting on dubious platforms are all grounds for getting hacked. This leads us to our next point.</p>
+<h2>3. Updates and Maintenance</h2>
+<p>Because of the nature of a dynamic site like WordPress, it requires much more attention. As mentioned, we need to keep it up-to-date, however, updating the core and especially plugins can often break the functionality of a site. We must then make sure we have a staged version of the site where we perform updates and testing regularly before migrating to the live version.</p>
+<p>Also, because we&#x27;ve now assumably relinquished some of the updates to the client, they are prone to making mistakes while updating pages. Even if limited access and training is given, it&#x27;s still more susceptible to human error. What often happens, is the client becomes somewhat weary of updating, or no longer willing to spend time on updates themselves because it requires time and attention. So they fall back to calling us in order to safely and efficiently make the updates for them. This all could have been avoided and saved a lot of money.</p>
+<h2>4. Cost</h2>
+<p>It should be clear by now that if it&#x27;s not absolutely necessary to update your site yourself on a weekly basis, that the hidden and explicit costs of WordPress will not be worth it over its simpler static counter-part.</p>
+<p>Paying us to do updates and maintenance on the site adds up. In fact, oftentimes, it takes slightly longer for us to update your content in WordPress than in a statically coded page if the update is somewhat complex.</p>
+<p>Building a WordPress site from scratch is more expensive than a static one. In fact, step 1 of the process is often simply coding a static site as the foundation for the rest.</p>
+<p>Hidden costs in a WordPress site can include: more expensive hosting, costs of repairs, more complicated environments to maintain, upgrading, migrating, testing, finding a competent developer, premium plugins, and more. A static site will share some of these costs, but almost always to a lesser degree.</p>
+<h2>5. Flexibility</h2>
+<p>As mentioned, a WordPress site is derived from a static one. It follows that the static site will always be more flexible because it&#x27;s not boxed in by the constraints of WordPress. Here are some of the things you&#x27;re not limited to when not tied to WordPress:</p>
+<ul>
+<li>PHP as a programming language</li>
+<li>A Database</li>
+<li>A WordPress developer.
+<small><p>Every WordPress developer should be able to code a static site, but the
+inverse isn&#x27;t always true. It&#x27;s a specialized skill.</p></small>
+</li>
+<li>Aesthetics.
+<small><p>WordPress works off of templates and so we must make the design of our pages
+consistent and template oriented in order to take advantage of WordPress.
+Otherwise we fall into coding a template for each page and it becomes a
+quasi static/WordPress monstrosity.</p></small>
+</li>
+<li>Changing platforms in the future.
+<small><p>In the future, your needs may change and become more specific. You may need
+to port your site to a specific framework or platform. This is trivial with
+a static site because it&#x27;s the foundation for everything anyway. It&#x27;s not
+the same case when you have a few hundred WordPress pages that are half in
+your database, half in your code, and Frankensteined together with plugins.</p></small>
+</li>
+</ul>
+<h2>6. Database</h2>
+<p>Having a database creates overhead every time you try and load a page. Your site must go to the database, retrieve information, compile it together with your code, and output it to the browser. A static site skips the first 3 steps. A lot of this can be overcome with a lot of caching and performance tricks in WordPress, but it&#x27;s a needless complication for most small websites.</p>
+<h2>7. Versioning, Migrations &amp; Maintainability</h2>
+<p>A good site will have its code versioned so other developers can contribute to it, either now or in the future; have a deployment process for moving the site from a developer&#x27;s computer, to a stage, to a live production; and be easily maintained and flexible enough to add enhancements as the requirements of the site grows.</p>
+<p>All of this can be done with WordPress, but again, it&#x27;s much simpler, faster and effectively done with a static site. This saves you money and time - two things we noticed most of our clients value more than their attachment to WordPress.</p>
+<h2>8. Better Talent Pool</h2>
+<p>This one is a bit more subtle but still important. WordPress has a very low barrier to entry due to the fact that you can build a site off of a pre-existing WordPress theme (template), throw plugins at it to add functionality, and use page builders to customize the look. This means, some &quot;developers&quot; never even touch the site&#x27;s code. When it comes time to address more complicated issues such as performance or specific functionality, they may become stuck due to their lack of technical knowledge.</p>
+<p>Someone that builds a static website from scratch knows their code thoroughly and is less likely to be limited by the out-of-the-box functionality for which WordPress is known.</p>
+<p>Also, as mentioned previously, you are choosing from a larger pool of competent developers when looking for someone to build a static site.</p>
+<h2>9. Do you even need it?</h2>
+<p>The final reason could&#x27;ve been the first, because it&#x27;s the basis for all of the other points. It all comes down to the question, &quot;do you really need it?&quot; In general, choosing a tool that does 10 things when you only need 1 of them done isn&#x27;t a great idea. A multi-functional tool is comparatively more expensive, less efficient and/or reliable in each task, and requires more specialized knowledge to use. Do you really need a jack-of-all trades, master of none, for a simple task? Or would a single hammer for a couple of nails do the job nicely?</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Plugin of the Week: No Format Shortcode]]></title>
+            <link>https://greghunt.dev/articles/plugin-week-2</link>
+            <guid>https://greghunt.dev/articles/plugin-week-2</guid>
+            <pubDate>Sun, 14 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[This week's plugin is clearly biased considering it's our own. We had a flexible solution to a common problem with formatting in WordPress, and so we shared it with others.]]></description>
+            <content:encoded><![CDATA[<a class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70" href="https://wordpress.org/plugins/no-format-shortcode/"><p>Download</p></a>
+<img src="https://img.ghunt.io/no-format-shortcode.png?fm=webp&amp;width=1000" alt="WordPress No format Shortcode"/>
+<p><strong>We made this plugin from necessity.</strong> Oftentimes when we&#x27;re formatting a particularly intricate page in WordPress&#x27;s editor, its automatic formatting, specifically the <code>wpautop</code> filter, would get in the way with our own HTML. The usual workaround for this is to simply disable <code>wpautop</code>:</p>
+<pre><code>remove_filter( &#x27;the_content&#x27;, &#x27;wpautop&#x27; );
+remove_filter( &#x27;the_excerpt&#x27;, &#x27;wpautop&#x27; );
+</code></pre>
+<p>However, this is a global change. It&#x27;s often the case that most pages are authored by the client and we do in fact want to keep it enabled for them to make things more convenient.</p>
+<p>This is where the need to selectively disable <code>wpautop</code> came in. A nice simple solution here is to just wrap your content in a shortcode. Like this:</p>
+<pre><code>[noformat]
+&lt;ul&gt;
+  &lt;li&gt;This content won&#x27;t be
+    formatted.
+&lt;/ul&gt;
+
+You&#x27;ll notice no automatic &lt;p&gt;&#x27;s or &lt;br/&gt;&#x27;s are added within this shortcode.
+[/noformat]
+</code></pre>
+<p>For awhile this was actually our own snippet we would drop into a theme or mu-plugins for a client. Then we realized after a quick search on the WP plugins repo that there wasn&#x27;t much in the way of a solution like this. It could be really valuable for other WordPress developers in need of finer control over formatting. So in the spirit of WordPress and open-source, we published it this week for all to use.</p>
+<p>Enjoy!</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Plugin of the Week: WP Notification Center]]></title>
+            <link>https://greghunt.dev/articles/plugin-week-1</link>
+            <guid>https://greghunt.dev/articles/plugin-week-1</guid>
+            <pubDate>Fri, 05 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Our WordPress plugin of the week is: WP Notification Center. We're sick of the messy notifications WordPress has yet to get a handle on.]]></description>
+            <content:encoded><![CDATA[<a class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70" href="https://wordpress.org/plugins/wp-notification-center/"><p>Notification Centre</p></a>
+<img width="800" height="400" src="https://img.ghunt.io/too-many-notifications.jpg" alt="Too many notifications in WordPress"/>
+<p><strong>WordPress has a serious problem with notifications.</strong> Don&#x27;t believe me? Take a look at this page:</p>
+<p>This is at the top of my list with WordPress frustrations at the moment. It&#x27;s just poor UX. I get that we need <strong>some</strong> sort of notification system, but the problem is that WordPress gives too much freedom to plugin developers to easily abuse it with no limits.</p>
+<p>That&#x27;s why <strong>Notification Centre</strong> is my top plugin of the week. It&#x27;s a nice simple solution to the UX problem, while keeping the notifications in tact and not just hiding them altogether. There&#x27;s room for improvement, since it doesn&#x27;t clean up <strong>all</strong> notifications, but you can&#x27;t always account for every use-case in an ecosystem like WordPress&#x27;s. Give it a try and you&#x27;ll probably find some relief from getting dizzy with red, green, and blue messages every time you log in.</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Single Page Applications VS Conventional]]></title>
+            <link>https://greghunt.dev/articles/spa-vs-conventional</link>
+            <guid>https://greghunt.dev/articles/spa-vs-conventional</guid>
+            <pubDate>Thu, 04 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Single page applications are certainly trendy, but do they solve your problem? Here are some things to consider.]]></description>
+            <content:encoded><![CDATA[<p>If you aren&#x27;t already familiar with the rise of <strong>single page applications</strong> (<abbr title="Single Page Applications">SPAs</abbr>), you probably just aren&#x27;t aware of them. They&#x27;re everywhere. And the technology that drives them is being chosen more and more for new projects by web developers, mostly with good reason, but not always. Read on to find out what they are, why they&#x27;re used, when they shouldn&#x27;t be, and some solutions that bridge the gap between SPAs and their more static server-side counter-parts.</p>
+<blockquote>
+<p><a href="#turbolinks">Skip below</a> for a neat trick that can be thrown into any website and make it feel similar to navigating a SPA.</p>
+</blockquote>
+<h2>What Are SPAs</h2>
+<p>Single page applications are web apps or sometimes entire websites, that are entirely loaded when you initially arrive, and through the <del>dark</del>magic of javascript, alter specific parts of the page according to user actions.</p>
+<p>This is in contrast to the conventional method of loading a single static page for each unique URL address. You then navigate between URLs within your application (or website) with links and a handful of other less common methods. This is obviously very simplified and there is tons of in-between here, but that&#x27;s the basic dichotomy.</p>
+<h3>GMail</h3>
+<p>GMail is a good example, and was also a pioneer of SPA, starting with it&#x27;s heavy use of AJAX requests when it first came out in 2004. The standard interface of GMail is built as an SPA and almost every action in it relies heavily on javascript, including its URL routing (notice the hash in it&#x27;s URL, that&#x27;s usually a good indicator of a SPA: mail.google.com/mail/u/0/ <strong>#</strong> inbox ).</p>
+<p>Now that you have the feel for a SPA, you can try the conventional version of GMail by refreshing the page and clicking the &quot;Load Basic HTML&quot; link in the bottom right corner. Try to ignore the lack of styling of the page, since this isn&#x27;t a characteristic of either, but rather GMail&#x27;s attempt to save bandwidth for their users. You&#x27;ll notice every action reloads the entire page and the URLs update accordingly.</p>
+<h3>The problems SPAs Solve</h3>
+<p>The most obvious difference from the user&#x27;s perspective between the two will be the speed and responsiveness of SPAs. Besides the initial load (which can still be quite similar to a regular web page with some optimization techniques), user actions are incredibly responsive. This is because instead of swapping the entire page for another to match the user&#x27;s request, we simply update only the element that&#x27;s supposed to update in that moment. This also saves the user&#x27;s bandwidth.</p>
+<p>The other benefits mostly fall under having a better developer experience, thereby possibly reducing the cost of development - but this entirely depends on the type of application you&#x27;re building. In a nutshell, if your application will require <strong>A LOT</strong> of complex user actions that are more than just navigational, you may want to consider a SPA using a well established javascript framework to do the heavy lifting.</p>
+<p>However, often times our needs don&#x27;t lie on either side of the spectrum and we need a lil&#x27; from column A, and a lil&#x27; from column B. Choosing a SPA to solve only one narrow aspect of your application may be overkill.</p>
+<h2>When SPAs are overkill</h2>
+<p>If your application consists mostly of the user navigating different pages and submitting a handful of forms, you should definitely stick with the conventional approach. This approach is generally cheaper, less error-prone, easier to maintain, more accessible and will more easily integrate with other 3<sup>rd</sup> party services.</p>
+<h2>The Best of Both Worlds</h2>
+<p>Our personal preference usually leans towards the conventional model, for the simple reason that a lot of the problems SPAs solve can be bridged with some simple techniques.</p>
+<ul>
+<li>Optimizing your app&#x27;s performance should already be a focus, so reducing the page load and aggressively caching certain parts will immediately speed up the user experience.</li>
+<li>We can still use frontend javascript frameworks (such as JQuery, React, &amp; Vue) to manage some of the more interactive portions of the application without wrapping the whole site in bloated javascript.</li>
+<li>One of our absolute favourite tricks is using this nifty library made by the creators of <a href="https://github.com/turbolinks/turbolinks/wiki/Turbolinks-5-FAQ">Basecamp</a>:</li>
+</ul>
+<h3><a href="https://github.com/turbolinks/turbolinks">TurboLinks</a></h3>
+<p><a href="https://github.com/turbolinks/turbolinks">This awesome little library</a> can be thrown into any conventional application and will automatically intercept all of your links and have them <strong>only load the difference</strong> between the current and next page. This leads to a much snappier experience when navigating, much like a SPA. In fact, this site currently uses it! Pay attention when you navigate the site and you&#x27;ll see that the page never fully reloads.</p>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+        <item>
+            <title><![CDATA[Kicking Off a More Vocal Chapter]]></title>
+            <link>https://greghunt.dev/articles/kickoff</link>
+            <guid>https://greghunt.dev/articles/kickoff</guid>
+            <pubDate>Sun, 16 Apr 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Up until now, our website has acted (and even resembled) more of a business card than a website. That's about to change. We want to keep you up to date with what we're doing.]]></description>
+            <content:encoded><![CDATA[<p>Up until now, our website has acted (and even resembled) more of a business card than a website. It&#x27;s shameful, really. But priorities somehow re-arrange themselves backwards sometimes. Fortunately, we noticed the irony in it all slightly sooner than later, albeit later than on-time.</p>
+<p>We wanted to write beautiful code but there was no one there to see it. Sure, the results were there for our customers, but in general they didn&#x27;t know the why and how we did what we did for them, they just knew they were satisfied with their final product.</p>
+<ul>
+<li>Gone are the days of silently toiling away like hermits. Today, we toil in public ‐ for the benefit of all.</li>
+<li>Want to know what&#x27;s new with us? Maybe? We&#x27;ll tell you anyway.</li>
+<li>Curious if we&#x27;re working on anything internally? Possibly? Well we are, and we&#x27;ll tell you about that too.</li>
+<li>Want tips and knowledge that&#x27;ll lead to you making better technical decisions for your business? I hope so, and we got you covered.</li>
+<li>Want first (and maybe only...) access to the freebies we create? Hopefully, so we&#x27;ll notify you in case you do.</li>
+</ul>
+<h3>We&#x27;re more social now too...</h3>
+<p>In case you get your info from one place in particular, feel free to subscribe there instead. We&#x27;ll basically just post what&#x27;s happening here anyway, but maybe it&#x27;s more convenient for you.</p>
+<ul role="list" class="flex gap-4"><li class="flex"><a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" href="https://www.facebook.com/FreshBrewedWebMTL/"><svg role="img" viewBox="0 0 24 24" class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg><span class="sr-only">Follow on Facebook</span></a></li><li class="flex"><a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" href="https://twitter.com/freshbreweddev"><svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"><path d="M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z"></path></svg><span class="sr-only">Follow on Twitter</span></a></li><li class="flex"><a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" href="https://instagram.com/gregandboo"><svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"><path d="M12 3c-2.444 0-2.75.01-3.71.054-.959.044-1.613.196-2.185.418A4.412 4.412 0 0 0 4.51 4.511c-.5.5-.809 1.002-1.039 1.594-.222.572-.374 1.226-.418 2.184C3.01 9.25 3 9.556 3 12s.01 2.75.054 3.71c.044.959.196 1.613.418 2.185.23.592.538 1.094 1.039 1.595.5.5 1.002.808 1.594 1.038.572.222 1.226.374 2.184.418C9.25 20.99 9.556 21 12 21s2.75-.01 3.71-.054c.959-.044 1.613-.196 2.185-.419a4.412 4.412 0 0 0 1.595-1.038c.5-.5.808-1.002 1.038-1.594.222-.572.374-1.226.418-2.184.044-.96.054-1.267.054-3.711s-.01-2.75-.054-3.71c-.044-.959-.196-1.613-.419-2.185A4.412 4.412 0 0 0 19.49 4.51c-.5-.5-1.002-.809-1.594-1.039-.572-.222-1.226-.374-2.184-.418C14.75 3.01 14.444 3 12 3Zm0 1.622c2.403 0 2.688.009 3.637.052.877.04 1.354.187 1.67.31.421.163.72.358 1.036.673.315.315.51.615.673 1.035.123.317.27.794.31 1.671.043.95.052 1.234.052 3.637s-.009 2.688-.052 3.637c-.04.877-.187 1.354-.31 1.67-.163.421-.358.72-.673 1.036a2.79 2.79 0 0 1-1.035.673c-.317.123-.794.27-1.671.31-.95.043-1.234.052-3.637.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.67-.31a2.789 2.789 0 0 1-1.036-.673 2.79 2.79 0 0 1-.673-1.035c-.123-.317-.27-.794-.31-1.671-.043-.95-.052-1.234-.052-3.637s.009-2.688.052-3.637c.04-.877.187-1.354.31-1.67.163-.421.358-.72.673-1.036.315-.315.615-.51 1.035-.673.317-.123.794-.27 1.671-.31.95-.043 1.234-.052 3.637-.052Z"></path><path d="M12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0-7.622a4.622 4.622 0 1 0 0 9.244 4.622 4.622 0 0 0 0-9.244Zm5.884-.182a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0Z"></path></svg><span class="sr-only">Follow on Instagram</span></a></li><li class="flex"><a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" href="https://github.com/greghunt"><svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"></path></svg><span class="sr-only">Follow on GitHub</span></a></li><li class="flex"><a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500" href="https://www.linkedin.com/in/greghunt/"><svg viewBox="0 0 24 24" class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"><path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z"></path></svg><span class="sr-only">Follow on LinkedIn</span></a></li></ul>]]></content:encoded>
+            <author>spencer@planetaria.tech (Greg Hunt)</author>
+        </item>
+    </channel>
+</rss>

@@ -1,11 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.webp'
 import { Fragment, useEffect, useRef } from 'react'
 
 function CloseIcon(props) {
@@ -231,15 +229,14 @@ function Avatar({ large = false, className, ...props }) {
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <Image
-        src={avatarImage}
-        alt=""
+      <img
+        src="https://hunt.imgix.net/greghunt.jpeg?w=72&h=72&auto=undefined%2Cformat%2Ccompress%2Cenhance&fit=crop&crop=focalpoint&fp-x=0.49&fp-y=0.4&fp-debug=false&fp-z=2"
+        alt="Greg Hunt Avatar"
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9'
         )}
-        priority
       />
     </Link>
   )
