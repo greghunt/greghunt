@@ -31,30 +31,38 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I’ve loved making things for as long as I can remember, and
-                wrote my first program when I was 6 years old, just two weeks
-                after my mom brought home the brand new Macintosh LC 550 that I
-                taught myself to type on.
+                I’ve loved creating things for as long as I can remember, but as
+                a kid this came out mostly in the form of writing. I{' '}
+                <em>loved</em> information and would go through a process of
+                reading, and re-writing what I've learned so I could organize
+                things in my head. That process of organizing information is
+                probably what I like most about developing websites in general
+                to this day.
               </p>
               <p>
-                The only thing I loved more than computers as a kid was space.
-                When I was 8, I climbed the 40-foot oak tree at the back of our
-                yard while wearing my older sister’s motorcycle helmet, counted
-                down from three, and jumped — hoping the tree was tall enough
-                that with just a bit of momentum I’d be able to get to orbit.
+                You would think I grew up as a computer geek considering that's
+                basically my profession, but in fact I <em>hated</em> being
+                inside, and didn't really like using gadgets. I prefered nature
+                and sports and exploring. I just so happened to fall into the
+                world of computers when I was asked as a teenager to learn
+                Photoshop and make some extra cash designing ads for my dad's
+                advertising business.
               </p>
               <p>
-                I spent the next few summers indoors working on a rocket design,
-                while I recovered from the multiple surgeries it took to fix my
-                badly broken legs. It took nine iterations, but when I was 15 I
-                sent my dad’s Blackberry into orbit and was able to transmit a
-                photo back down to our family computer from space.
+                I may not have liked computers inherently, but I loved that I
+                was able to create stuff with them and organize information in
+                beautiful and creative ways. And so that's what drove my passion
+                to become the best web developer I could be. Because that
+                allowed me to create as much as possible on a platform that
+                would become ubiquitous.
               </p>
               <p>
-                Today, I’m the founder of Planetaria, where we’re working on
-                civilian space suits and manned shuttle kits you can assemble at
-                home so that the next generation of kids really <em>can</em>{' '}
-                make it to orbit — from the comfort of their own backyards.
+                I've spent most of my professional life developing websites and
+                web apps and as the CTO of a WordPress web agency. Most
+                recently, I've moved on from exclusively customer projects to
+                build software products I think the general public can find use
+                for. Nothing makes me happier than building stuff people will
+                actually use and somehow make their lives a little bit better.
               </p>
             </div>
           </div>

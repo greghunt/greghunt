@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -7,15 +6,6 @@ import Button from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { SocialList } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -161,7 +151,7 @@ function Resume() {
     },
     {
       company: 'AdFlash Inc.',
-      title: 'Media Director, Graphic Designer, Project Manager',
+      title: 'Graphic Designer',
       logo: 'https://img.ghunt.io/adflash-logo.png',
       start: '2005',
       end: '2011',
@@ -208,8 +198,13 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
+      <Button
+        href="https://www.linkedin.com/in/greghunt/"
+        variant="secondary"
+        className="group mt-6 w-full"
+        target="_blank"
+      >
+        Check-out the CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
@@ -218,11 +213,17 @@ function Resume() {
 
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
+  const images = [
+    'https://img.ghunt.io/greg-highland-games-pole-toss.jpg?fm=webp&fit=crop&crop=focalpoint&w=600&h=600&fp-x=0.40&fp-y=0.7&fp-z=1.5',
+    'https://img.ghunt.io/laptop-nature.jpeg?fm=webp&fit=crop&crop=focalpoint&w=600&h=600&fp-x=0.5&fp-y=1&fp-z=1.5',
+    'https://img.ghunt.io/greg-thai-massage-guatemala.jpeg?fm=webp&fit=crop&crop=focalpoint&w=600&h=600',
+    'https://img.ghunt.io/basketball-swoosh.jpeg?fm=webp&fit=crop&crop=focalpoint&w=600&h=600&fp-x=0.35&fp-y=0.5&fp-z=1.5',
+    'https://img.ghunt.io/greg-top-fuji.jpg?fm=webp&fit=crop&crop=focalpoint&w=600&h=600&fp-x=0.35&fp-y=0.2&fp-z=1.5',
+  ]
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+        {images.map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
@@ -230,7 +231,7 @@ function Photos() {
               rotations[imageIndex % rotations.length]
             )}
           >
-            <Image
+            <img
               src={image}
               alt=""
               sizes="(min-width: 640px) 18rem, 11rem"
@@ -243,28 +244,26 @@ function Photos() {
   )
 }
 
+const headline = 'Web craftsman and nature enthusiast. Side hustling as CTO.'
+const description =
+  'I’m Greg, a software developer and entrepreneur based in Montreal. I build things for the web from start to finish.'
 export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>
-          Greg Hunt - Software designer, founder, and amateur astronaut
-        </title>
-        <meta
-          name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
-        />
+        <title>Greg Hunt – {headline}</title>
+        <meta name="description" content={description} />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            Web craftsman and nature enthusiast
+            <span className="ml-3 text-4xl text-zinc-700 dark:text-zinc-300">
+              / Side hustling as CTO.
+            </span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            {description}
           </p>
           <SocialList showLabel={false} className="mt-6 flex gap-6" />
         </div>
