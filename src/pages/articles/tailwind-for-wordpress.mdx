@@ -1,18 +1,19 @@
----
-title: Tailwind for WordPress
-date: 2022-06-01T19:59:06+00:00
-layout: "@layouts/Post.astro"
-description: Tailwind CSS is the perfect companion to WordPress block development. However it''s been a struggle to integrate Tailwind for WordPress. Until now!
-keyword: tailwind for wordpress
-heroImage: https://img.ghunt.io/tailwind-wordpress.png
-tags:
-    - css
-    - plugins
-    - styling
-    - tailwind
----
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Greg Hunt',
+  date: '2022-06-01',
+  title: 'Tailwind for WordPress',
+  categories: ['wordpress', 'tailwind', 'css', 'frontend', 'plugins'],
+  description:
+    "Tailwind CSS is the perfect companion to WordPress block development. However it''s been a struggle to integrate Tailwind for WordPress. Until now!",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
 
 [Tailwind CSS is a great development tool](/posts/component-development-and-taillwind-css/) if you aren’t already familiar with it. If we’re developing any site outside of WordPress, we almost always use it as our styling framework. This is because it:
+
+<img src="https://img.ghunt.io/tailwind-wordpress.png" alt="Tailwind for WordPress"/>
 
 - Is incredibly fast to write styles
 - Lends itself well to abstracting your classes into components
