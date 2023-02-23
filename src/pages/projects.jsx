@@ -6,6 +6,26 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 
 const projects = [
   {
+    name: 'Review Butler',
+    description:
+      'Review Butler makes it easier to get more testimonials for your business by providing pre-written reviews with the help of AI.',
+    link: {
+      href: 'https://reviewbutler.io/',
+      label: 'reviewbutler.io',
+    },
+    logo: 'https://img.ghunt.io/review-butler-icon.png',
+  },
+  {
+    name: 'Simplified Science',
+    description:
+      'A pet project that simplifies the latest scientific literature for the average person using AI.',
+    link: {
+      href: 'https://simplifiedscience.org/',
+      label: 'simplifiedscience.org',
+    },
+    logo: 'https://img.ghunt.io/simplified-science-org.png',
+  },
+  {
     name: 'TailPress',
     description:
       'A WordPress plugin that adds seamless Tailwind CSS support to WordPress.',
