@@ -47,7 +47,7 @@ const projects = [
     name: 'Oakparks',
     description:
       "The internet's largest plant database. Find a plant by function instead of name.",
-    link: { href: 'https://oakparks.org', label: 'oakparks.com' },
+    link: { href: '/projects/oakparks', label: 'oakparks.com' },
     logo: 'https://img.ghunt.io/oakparks-icon.png',
   },
   {
