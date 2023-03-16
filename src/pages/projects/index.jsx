@@ -40,7 +40,7 @@ const projects = [
     name: 'Clippabl',
     description:
       'Easily clip and caption your already hosted videos for social media.',
-    link: { href: 'https://clippabl.com', label: 'clippabl.com' },
+    link: { href: '/projects/clippabl', label: 'clippabl.com' },
     logo: 'https://img.ghunt.io/clippabl-icon.png',
   },
   {
