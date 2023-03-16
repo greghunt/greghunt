@@ -9,7 +9,7 @@ export default function About() {
         <title>About - Greg Hunt</title>
         <meta
           name="description"
-          content="I’m Greg Hunt. I live in New York City, where I design the future."
+          content="I’m Greg Hunt. I live in Montreal, where I build things for the web."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">

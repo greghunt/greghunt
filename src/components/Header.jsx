@@ -122,6 +122,7 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/articles">Articles</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
+                <MobileNavItem href="/fbw">Fresh Brewed Web</MobileNavItem>
                 <MobileNavItem href="/uses">Uses</MobileNavItem>
               </ul>
             </nav>
@@ -132,15 +133,16 @@ function MobileNavigation(props) {
   )
 }
 
-function NavItem({ href, children }) {
+function NavItem({ href, children, title }) {
   let isActive = useRouter().pathname === href
 
   return (
     <li>
       <Link
+        title={title}
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative flex items-center px-3 py-2 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
             : 'hover:text-teal-500 dark:hover:text-teal-400'
@@ -163,6 +165,13 @@ function DesktopNavigation(props) {
         <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         <NavItem href="/uses">Uses</NavItem>
+        <NavItem href="/fbw" title="Fresh Brewed Web Inc.">
+          <img
+            src="https://img.ghunt.io/fresh-brewed-web-icon.png?w=40&h=40fm=webp"
+            className="mr-2 h-5 w-5 rounded-full"
+          />
+          FBW
+        </NavItem>
       </ul>
     </nav>
   )
@@ -403,7 +412,7 @@ export function Header() {
                   </AvatarContainer>
                 )}
               </div>
-              <div className="flex flex-1 justify-end md:justify-center">
+              <div className="flex justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
