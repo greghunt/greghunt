@@ -47,12 +47,17 @@ const index = [
   {
     slug: 'tailpress',
     date: '2022-06-01',
-    tags: ['project', 'wordpress', 'plugin'],
+    tags: ['project', 'wordpress', 'plugin', 'open-source'],
   },
   {
     date: '2019-01-01',
     slug: 'clippabl',
     tags: ['project', 'saas', 'ffmpeg', 'laravel'],
+  },
+  {
+    date: '2017-11-01',
+    slug: 'motto',
+    tags: ['work'],
   },
   {
     date: '2017-07-20',
@@ -97,7 +102,7 @@ const index = [
   {
     slug: 'valhalla',
     date: '2012-01-01',
-    tags: ['project', 'wordpress'],
+    tags: ['project', 'wordpress', 'charity'],
   },
 ]
 

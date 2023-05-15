@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getPosts } from '@/app/lib/content'
 import Posts from '@/app/components/posts'
-import { SocialList, SocialLink, MailIcon } from '@/app/components/SocialIcons'
+import { SocialList, SocialLink } from '@/app/components/social'
+import { Mail } from '@/app/icons'
 import Button from '@/app/components/button'
 import Header from '@/app/components/header'
 import { Newsletter } from '@/app/components/newsletter'
@@ -51,7 +52,7 @@ export default async function Home() {
                           <SocialList showLabel={false} />
                           <SocialLink
                             href="mailto:treat-sunlit0b@icloud.com"
-                            icon={MailIcon}
+                            icon={Mail}
                             className="w-full"
                             showLabel={true}
                           >
