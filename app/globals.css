@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wrapper {
+  @apply px-8 md:px-20 w-full mx-auto max-w-screen-xl;
+}
