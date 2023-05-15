@@ -82,7 +82,7 @@ export function FacebookIcon(props) {
 
 export function SocialList(props) {
   return (
-    <ul role="list" {...props}>
+    <>
       <SocialLink
         href="https://www.facebook.com/FreshBrewedWebMTL/"
         icon={FacebookIcon}
@@ -118,6 +118,6 @@ export function SocialList(props) {
       >
         Follow on LinkedIn
       </SocialLink>
-    </ul>
+    </>
   )
 }

@@ -9,6 +9,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 interface PostFilter {
   date?: string
   tag?: string
+  tags?: string[]
 }
 
 export type IndexItem = {
@@ -116,9 +117,17 @@ export async function getPosts(
   filter: PostFilter,
   pinned: boolean = false
 ): Promise<PostMeta[]> {
-  let items = sortIndex(index).filter((item) => {
+  let items: IndexItem[] = sortIndex(index).filter((item) => {
     if (filter?.date) return item.date.startsWith(filter.date)
     if (filter?.tag) return item.tags?.includes(filter.tag)
+    if (filter?.tags) {
+      if (item?.tags) {
+        for (const tag of item.tags) {
+          if (filter.tags.includes(tag)) return true
+        }
+        return false
+      }
+    }
     return true
   })
 
