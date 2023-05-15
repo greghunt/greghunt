@@ -60,16 +60,17 @@ export default async function Page({ params }: PageParams) {
               dateString={post.date}
             />
             <ul className="flex space-x-3">
-              {post.tags.map((tag) => (
-                <li>
-                  <Link
-                    href={`/tag/${tag}`}
-                    className="hover:text-teal-400 uppercase px-3 py-2 text-xs font-bold border border-teal-400 rounded-full"
-                  >
-                    {tag}
-                  </Link>
-                </li>
-              ))}
+              {post.tags &&
+                post.tags.map((tag) => (
+                  <li>
+                    <Link
+                      href={`/tag/${tag}`}
+                      className="hover:text-teal-400 uppercase px-3 py-2 text-xs font-bold border border-teal-400 rounded-full"
+                    >
+                      {tag}
+                    </Link>
+                  </li>
+                ))}
             </ul>
             <div className="prose prose-invert my-12">{post.content}</div>
           </article>
