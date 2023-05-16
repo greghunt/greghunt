@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const posts = await getPosts({ tags: ['work', 'project', 'charity'] })
+  const posts = await getPosts({
+    tags: ['work', 'project', 'charity', 'portfolio'],
+  })
   return <Posts posts={posts} />
 }

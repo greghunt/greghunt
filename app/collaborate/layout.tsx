@@ -3,6 +3,7 @@ import Header from '@/app/components/header'
 import Nav from './nav'
 import { SocialLink } from '@/app/components/social'
 import { Dollar, Mail } from '@/app/icons'
+import PageTitle from '../components/page-title'
 
 export default function CollaborateLayout({
   children,
@@ -17,7 +18,7 @@ export default function CollaborateLayout({
           Greg Hunt, Web Developer
         </Link>
         <main>
-          <h1 className="text-5xl font-bold uppercase">Work with Me</h1>
+          <PageTitle className="text-gradient">Work with Me</PageTitle>
           <p className="text-xl font-light">
             I'm always open to collaboration in different forms:
           </p>

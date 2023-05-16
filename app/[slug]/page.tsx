@@ -4,6 +4,7 @@ import Link from 'next/link'
 import '../prism.css'
 import { getPost, Post } from '@/app/lib/content'
 import Header from '@/app/components/header'
+import PageTitle from '@/app/components/page-title'
 import PostDate from '@/app/components/post-date'
 import Image from 'next/image'
 import { Turnaround } from '@/app/icons'
@@ -43,7 +44,8 @@ export default async function Page({ params }: PageParams) {
             Back <Turnaround className="inline-block mr-1 w-4 h-4" />
           </Link>
           <article>
-            <h1 className="text-5xl font-bold">{post.title}</h1>
+            <PageTitle className="mb-12 text-gradient">{post.title}</PageTitle>
+
             {post.image && (
               <div className="h-80 my-6">
                 <Image

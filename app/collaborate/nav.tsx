@@ -21,6 +21,10 @@ const nav: NavItem[] = [
     label: "Places I've worked",
   },
   {
+    href: '/collaborate/portfolio',
+    label: "Portfolio of Websites I've Built",
+  },
+  {
     href: '/collaborate/open-source',
     label: 'Open Source',
   },

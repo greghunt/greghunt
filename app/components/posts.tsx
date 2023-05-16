@@ -8,6 +8,8 @@ import { groupByDate, getTagsFromPosts } from '@/app/lib/utils'
 import slugify from 'slugify'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import { Oswald } from 'next/font/google'
+const oswald = Oswald({ subsets: ['latin'] })
 
 function normalize(str: string) {
   return slugify(str.toLowerCase())
@@ -48,12 +50,12 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
                 key={year}
                 className="flex flex-col md:flex-row-reverse md:justify-end md:gap-12"
               >
-                <div className="sticky top-0 z-40 bg-dark/50 backdrop-blur">
-                  <Link href={`/date/${year}`}>
-                    <h2 className="sticky top-6 text-5xl font-bold text-slate-600">
-                      {year}
-                    </h2>
-                  </Link>
+                <div className="sticky top-0 z-40 bg-gradient-to-b from-dark/50 pt-4 pb-10 md:py-0">
+                  <h2
+                    className={`${oswald.className} sticky top-6 text-5xl font-extrabold text-slate-700 tracking-tighter w-full md:w-[4ch] md:text-right`}
+                  >
+                    <Link href={`/date/${year}`}>{year}</Link>
+                  </h2>
                 </div>
                 <div className="flex-1">
                   {Object.entries(months)
@@ -61,26 +63,28 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
                     .map(([month, days]) => (
                       <div
                         key={month}
-                        className="flex flex-col md:flex-row-reverse md:justify-end md:gap-12"
+                        className="flex flex-col md:flex-row-reverse md:justify-between md:gap-12"
                       >
-                        <div className="sticky top-0 z-40">
-                          <Link href={`/date/${year}-${month}`}>
-                            <h3 className="text-right flex-1 sticky top-6 text-3xl font-bold text-slate-400">
+                        <div className="sticky top-12 z-40">
+                          <h3
+                            className={`${oswald.className} md:text-right sticky top-6 text-3xl font-bold text-slate-400 w-full md:w-[8ch] uppercase`}
+                          >
+                            <Link href={`/date/${year}-${month}`}>
                               {getMonthName(parseInt(month))}
-                            </h3>
-                          </Link>
+                            </Link>
+                          </h3>
                         </div>
-                        <div className="w-full max-w-lg flex-1">
+                        <div className="w-full mt-4 md:mt-0">
                           {Object.entries(days).map(([day, posts]) => (
-                            <div key={day}>
+                            <>
                               {posts.map((post, index) => (
                                 <Card
                                   key={post.slug}
                                   post={post}
-                                  className="mb-8"
+                                  className="mb-8 w-full"
                                 />
                               ))}
-                            </div>
+                            </>
                           ))}
                         </div>
                       </div>

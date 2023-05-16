@@ -90,6 +90,36 @@ const index = [
     tags: ['news'],
   },
   {
+    date: '2017-04-01',
+    slug: 'thai-massage-toronto',
+    tags: ['design', 'wordpress', 'portfolio'],
+  },
+  {
+    date: '2016-07-22',
+    slug: 'valhalla-farms',
+    tags: ['charity', 'design', 'wordpress', 'portfolio'],
+  },
+  {
+    date: '2016-07-01',
+    slug: 'epicentre-training',
+    tags: ['design', 'wordpress', 'portfolio'],
+  },
+  {
+    date: '2016-11-01',
+    slug: 'creative-philanthropy',
+    tags: ['charity', 'design', 'static', 'portfolio'],
+  },
+  {
+    date: '2016-08-01',
+    slug: 'environment-celebration-institute',
+    tags: ['ecommerce', 'design', 'wordpress', 'portfolio'],
+  },
+  {
+    date: '2016-06-01',
+    slug: 'ryan-schwartz',
+    tags: ['marketing', 'design', 'wordpress', 'portfolio'],
+  },
+  {
     date: '2016-10-01',
     slug: 'oakparks',
     tags: ['project', 'laravel'],

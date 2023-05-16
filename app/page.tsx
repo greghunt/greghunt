@@ -6,6 +6,7 @@ import { SocialList, SocialLink } from '@/app/components/social'
 import { Mail } from '@/app/icons'
 import Button from '@/app/components/button'
 import Header from '@/app/components/header'
+import PageTitle from '@/app/components/page-title'
 import { Newsletter } from '@/app/components/newsletter'
 
 export default async function Home() {
@@ -41,7 +42,11 @@ export default async function Home() {
               <div className="wrapper relative z-30 md:z-10 h-full">
                 <div className="md:w-1/2 h-full flex flex-col items-center justify-center">
                   <div className="py-20 md:py-0">
-                    <h1 className="text-5xl font-bold">Greg Hunt, Developer</h1>
+                    <div className="mix-blend-screen">
+                      <PageTitle className="text-gradient drop-shadow-lg">
+                        Greg Hunt, Developer
+                      </PageTitle>
+                    </div>
                     <p className="text-xl font-light">
                       I’m a software developer and entrepreneur based in
                       Montreal. I build things for the web from start to finish.
