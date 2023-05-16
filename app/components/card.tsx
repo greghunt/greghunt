@@ -3,6 +3,7 @@ import type { PostMeta } from '@/app/lib/content'
 import Link from 'next/link'
 import PostDate from '@/app/components/post-date'
 import { Link as IconLink } from '@/app/icons'
+import Image from 'next/image'
 
 export default function Card({
   post,
@@ -22,10 +23,12 @@ export default function Card({
       {...rest}
     >
       {post.image && (
-        <img
+        <Image
           className="md:absolute -top-4 -right-4 h-40 w-40 rounded-xl object-cover mix-blend-luminosity object-left-bottom group-hover:mix-blend-normal group-hover:right-1 group-hover:top-1 transition-all group-hover:rounded-lg"
           src={post.image.src}
           alt={post.image.alt || post.title}
+          width={600}
+          height={600}
         />
       )}
       <div className="relative py-4 md:px-4">

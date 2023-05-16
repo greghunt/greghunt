@@ -104,11 +104,11 @@ const index = [
     slug: 'epicentre-training',
     tags: ['design', 'wordpress', 'portfolio'],
   },
-  {
-    date: '2016-11-01',
-    slug: 'creative-philanthropy',
-    tags: ['charity', 'design', 'static', 'portfolio'],
-  },
+  // {
+  //   date: '2016-11-01',
+  //   slug: 'creative-philanthropy',
+  //   tags: ['charity', 'design', 'static', 'portfolio'],
+  // },
   {
     date: '2016-08-01',
     slug: 'environment-celebration-institute',
