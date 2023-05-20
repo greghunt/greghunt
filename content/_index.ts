@@ -1,5 +1,10 @@
 const index = [
   {
+    slug: 'roast-my-first-saas',
+    date: '2023-05-04',
+    tags: ['saas', 'indiehacker'],
+  },
+  {
     slug: 'tailwind-loading-indicator',
     date: '2023-05-01',
     tags: ['tailwind', 'frontend'],

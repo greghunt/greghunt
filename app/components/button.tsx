@@ -1,19 +1,31 @@
-import React, { ButtonHTMLAttributes } from 'react'
+import Link from 'next/link'
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode
+interface ButtonProps {
+  href?: string
+  as?: string
   className?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
-  const buttonClasses = clsx(
-    'border-2 border-teal-300 text-white font-semibold py-3 px-6 rounded bg-teal-900/10 backdrop-blur-sm hover:backdrop-blur-lg hover:bg-teal-900/20 hover:text-teal-200 hover:border-teal-200 hover:scale-105 transition',
-    className
-  )
+const defaultClass =
+  'inline-flex items-center justify-center text-center border-2 border-teal-300 text-white font-semibold py-3 px-6 rounded bg-teal-900/50 backdrop-blur-lg bg-teal-900/20 hover:text-teal-200 hover:border-teal-200 hover:scale-105 transition'
+
+const Button: FC<
+  ButtonProps & ButtonHTMLAttributes<{}> & AnchorHTMLAttributes<{}>
+> = ({ href, as, children, className, ...props }) => {
+  const combinedClass = clsx(defaultClass, className)
+
+  if (href) {
+    return (
+      <Link href={href} as={as} {...props} className={combinedClass}>
+        {children}
+      </Link>
+    )
+  }
 
   return (
-    <button className={buttonClasses} {...rest}>
+    <button {...props} className={combinedClass}>
       {children}
     </button>
   )
