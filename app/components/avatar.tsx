@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { is } from 'date-fns/locale'
 
 export default function Avatar() {
   const [isVisible, setIsVisible] = useState(true)
