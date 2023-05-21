@@ -1,3 +1,4 @@
+'use client'
 import clsx from 'clsx'
 import type { PostMeta } from '@/app/lib/content'
 import Link from 'next/link'
@@ -5,19 +6,17 @@ import PostDate from '@/app/components/post-date'
 import { Link as IconLink } from '@/app/icons'
 import Image from 'next/image'
 
-export default function Card({
-  post,
-  className,
-  ...rest
-}: {
+interface CardProps {
   post: PostMeta
   className?: string
-}) {
+}
+
+const Card: React.FC<CardProps> = ({ className, post, ...rest }) => {
   return (
     <Link
       href={post.link ? post.link.href : `/${post.slug}`}
       className={clsx(
-        'block border-2 border-white/10 px-4 py-3 rounded-xl relative overflow-hidden bg-brand hover:border-white/30 hover:overflow-auto transition-all group',
+        'block border-2 border-[#2D394D] px-4 py-3 rounded-xl relative overflow-hidden bg-[#151B24] hover:border-white/30 hover:overflow-auto transition-all group',
         className
       )}
       {...rest}
@@ -38,7 +37,7 @@ export default function Card({
           })}
         >
           {post.link && (
-            <span className="text-teal-200/60 flex items-center">
+            <span className="text-teal-200/50 flex items-center">
               <IconLink className="w-4 h-4 mr-2" />
               {post.link.label}
             </span>
@@ -46,7 +45,7 @@ export default function Card({
           <h2 className="text-2xl font-bold mb-4">{post.title}</h2>
           <p className="leading-relaxed text-slate-300">{post.description}</p>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between text-teal-600">
+        <div className="flex flex-col sm:flex-row justify-between text-teal-500">
           {post.tags && post.tags.length > 0 && (
             <ul className="flex space-x-3 text-sm font-bold">
               {post.tags.map((tag) => (
@@ -60,3 +59,5 @@ export default function Card({
     </Link>
   )
 }
+
+export default Card

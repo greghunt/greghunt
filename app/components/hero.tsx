@@ -29,7 +29,7 @@ export default function Hero() {
               <div className="md:w-1/2 h-full flex flex-col items-center md:justify-center">
                 <div className="py-20 md:py-0">
                   <div className="mix-blend-screen">
-                    <PageTitle className="text-gradient drop-shadow-lg text-7xl">
+                    <PageTitle className="text-gradient drop-shadow-lg text-7xl mb-3">
                       <span className="whitespace-nowrap">Greg Hunt</span>,{' '}
                       <span className="whitespace-nowrap">Web Developer</span>
                     </PageTitle>
@@ -71,7 +71,7 @@ export default function Hero() {
         </div>
         <a
           href="#posts"
-          className="block absolute bottom-0 inset-x-0 bg-teal-50/10 backdrop-blur-sm text-white w-full py-6 z-10 text-right md:text-left font-bold uppercase border-t-4 border-dark/50 shadow"
+          className="block absolute bottom-0 inset-x-0 bg-teal-50/10 backdrop-blur-sm text-white w-full py-6 z-10 text-right md:text-left font-bold uppercase border-t-2 border-dark/50 shadow"
         >
           <span className="block wrapper">Discover my work ⬇</span>
         </a>

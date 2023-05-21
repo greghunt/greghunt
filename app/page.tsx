@@ -12,7 +12,7 @@ export default async function Home() {
       <Header />
       <Hero />
       <main id="posts">
-        <div className="wrapper">
+        <div className="wrapper bg-cover">
           {/* <Newslettercon /> */}
           <Posts posts={posts} />
         </div>

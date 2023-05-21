@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Card from '@/app/components/card'
 import PostSearchFilter from '@/app/components/post-search-filter'
 import { PostMeta } from '@/app/lib/content'
@@ -48,11 +48,11 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
             .map(([year, months]) => (
               <div
                 key={year}
-                className="flex flex-col md:flex-row-reverse md:justify-end md:gap-12"
+                className="flex flex-col md:flex-row-reverse md:justify-end md:gap-12 border-r-8 border-[#19202B]"
               >
                 <div className="sticky top-0 z-40 bg-gradient-to-b from-dark/50 pt-4 pb-10 md:py-0">
                   <h2
-                    className={`${oswald.className} sticky top-6 text-5xl font-extrabold text-slate-700 tracking-tighter w-full md:w-[4ch] md:text-right`}
+                    className={`${oswald.className} sticky top-6 text-5xl font-extrabold text-slate-700 tracking-tighter w-full md:w-[4ch] md:text-right bg-dark -mr-2`}
                   >
                     <Link href={`/date/${year}`}>{year}</Link>
                   </h2>
@@ -63,11 +63,11 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
                     .map(([month, days]) => (
                       <div
                         key={month}
-                        className="flex flex-col md:flex-row-reverse md:justify-between md:gap-12"
+                        className="flex flex-col md:flex-row-reverse md:justify-between md:gap-12 border-r border-dashed border-[#2D394D]"
                       >
                         <div className="sticky top-12 z-40">
                           <h3
-                            className={`${oswald.className} md:text-right sticky top-6 text-3xl font-bold text-slate-400 w-full md:w-[8ch] uppercase`}
+                            className={`${oswald.className} md:text-right sticky top-6 text-3xl font-bold text-slate-400 w-full md:w-[8ch] uppercase bg-dark -mr-2`}
                           >
                             <Link href={`/date/${year}-${month}`}>
                               {getMonthName(parseInt(month))}
