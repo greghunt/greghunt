@@ -1,21 +1,24 @@
 {
-  "name": "greghunt",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/cloudflare": "^12.5.0",
-    "@lucide/astro": "^0.503.0",
-    "@tailwindcss/vite": "^4.1.4",
-    "astro": "^5.7.4",
-    "tailwindcss": "^4.1.4"
-  },
-  "devDependencies": {
-    "wrangler": "^4.12.1"
-  }
+	"name": "greghunt",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro build && wrangler pages dev",
+		"astro": "astro",
+		"deploy": "astro build && wrangler pages deploy",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^12.5.0",
+		"@lucide/astro": "^0.503.0",
+		"@tailwindcss/vite": "^4.1.4",
+		"astro": "^5.7.4",
+		"tailwindcss": "^4.1.4"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250422.0",
+		"wrangler": "^4.12.1"
+	}
 }
